@@ -76,7 +76,7 @@ class HullSuiteStrategy_v3(IStrategy):
     ignore_roi_if_entry_signal = False
 
     # Number of candles the strategy requires before producing valid signals
-    startup_candle_count: int = 30
+    startup_candle_count: int = 80
 
     # HULL SUITE
     #hull_length = 55
