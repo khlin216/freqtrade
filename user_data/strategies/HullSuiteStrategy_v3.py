@@ -8,8 +8,14 @@ from pandas import DataFrame
 from datetime import datetime
 from typing import Optional, Union
 
-from freqtrade.strategy import (BooleanParameter, CategoricalParameter, DecimalParameter,
-                                IntParameter, IStrategy, merge_informative_pair)
+from freqtrade.strategy import (
+    BooleanParameter,
+    CategoricalParameter,
+    DecimalParameter,
+    IntParameter,
+    IStrategy,
+    merge_informative_pair,
+)
 
 # --------------------------------
 # Add your lib to import here
@@ -19,6 +25,7 @@ from technical import qtpylib
 from functools import reduce
 
 import time
+
 
 class HullSuiteStrategy_v3(IStrategy):
     """
@@ -37,13 +44,14 @@ class HullSuiteStrategy_v3(IStrategy):
     You should keep:
     - timeframe, minimal_roi, stoploss, trailing_*
     """
+
     # Strategy interface version - allow new iterations of the strategy interface.
     # Check the documentation or the Sample strategy to get the latest version.
     INTERFACE_VERSION = 3
 
     # Optimal timeframe for the strategy.
     # timeframe = '1h'
-    timeframe = '4h'
+    timeframe = "4h"
 
     # Can this strategy go short?
     can_short: bool = False
@@ -54,7 +62,7 @@ class HullSuiteStrategy_v3(IStrategy):
         # "60": 0.01,
         # "30": 0.02,
         # "0": 0.04
-        "0":10
+        "0": 10
     }
 
     # Optimal stoploss designed for the strategy.
@@ -79,43 +87,40 @@ class HullSuiteStrategy_v3(IStrategy):
     startup_candle_count: int = 30
 
     # HULL SUITE
-    #hull_length = 55
+    # hull_length = 55
     hull_length = IntParameter(27, 200, default=75, space="buy")
     buy_trigger = CategoricalParameter(["hma", "thma", "ehma"], default="hma", space="buy")
     use_macd_buy = BooleanParameter(default=False, space="buy")
     use_macd_sell = BooleanParameter(default=False, space="sell")
 
-    print('macd',use_macd_buy)
+    print("macd", use_macd_buy)
     # time.sleep(10000)
 
     # Optional order type mapping.
     order_types = {
-        'entry': 'limit',
-        'exit': 'limit',
-        'stoploss': 'market',
-        'stoploss_on_exchange': False
+        "entry": "limit",
+        "exit": "limit",
+        "stoploss": "market",
+        "stoploss_on_exchange": False,
     }
 
     # Optional order time in force.
-    order_time_in_force = {
-        'entry': 'GTC',
-        'exit': 'GTC'
-    }
+    order_time_in_force = {"entry": "GTC", "exit": "GTC"}
 
     @property
     def plot_config(self):
         return {
             # Main plot indicators (Moving averages, ...)
-            'main_plot': {
-                'hma_55': {'color': 'yellow'},
+            "main_plot": {
+                "hma_55": {"color": "yellow"},
             },
-            'subplots': {
+            "subplots": {
                 # Subplots - each dict defines one additional plot
                 "MACD": {
-                    'macd': {'color': 'blue'},
-                    'macdsignal': {'color': 'orange'},
+                    "macd": {"color": "blue"},
+                    "macdsignal": {"color": "orange"},
                 }
-            }
+            },
         }
 
     def informative_pairs(self):
@@ -145,30 +150,30 @@ class HullSuiteStrategy_v3(IStrategy):
 
         # MACD
         macd = ta.MACD(dataframe)
-        dataframe['macd'] = macd['macd']
-        dataframe['macdsignal'] = macd['macdsignal']
-        #dataframe['macdhist'] = macd['macdhist']
+        dataframe["macd"] = macd["macd"]
+        dataframe["macdsignal"] = macd["macdsignal"]
+        # dataframe['macdhist'] = macd['macdhist']
 
         # HULL SUITE
-        #HMA
+        # HMA
         for val in self.hull_length.range:
-            wma1 = ta.WMA(dataframe['close'], int(val / 2))
-            wma2 = ta.WMA(dataframe['close'], val)
-            dataframe[f'hma_{val}'] = ta.WMA(2 * wma1 - wma2, int(np.sqrt(val)))
+            wma1 = ta.WMA(dataframe["close"], int(val / 2))
+            wma2 = ta.WMA(dataframe["close"], val)
+            dataframe[f"hma_{val}"] = ta.WMA(2 * wma1 - wma2, int(np.sqrt(val)))
 
-        #THMA
+        # THMA
         for val in self.hull_length.range:
-            #val = val // 2
-            wma_1 = ta.WMA(dataframe['close'], val // 3) * 3
-            wma_2 = ta.WMA(dataframe['close'], val // 2)
-            wma_3 = ta.WMA(dataframe['close'], val)
-            dataframe[f'thma_{val}'] = ta.WMA(wma_1 - wma_2 - wma_3, val)
+            # val = val // 2
+            wma_1 = ta.WMA(dataframe["close"], val // 3) * 3
+            wma_2 = ta.WMA(dataframe["close"], val // 2)
+            wma_3 = ta.WMA(dataframe["close"], val)
+            dataframe[f"thma_{val}"] = ta.WMA(wma_1 - wma_2 - wma_3, val)
 
-        #EHMA
+        # EHMA
         for val in self.hull_length.range:
-            ema_1 = ta.EMA(dataframe['close'], val // 2)
-            ema_2 = ta.EMA(dataframe['close'], val)
-            dataframe[f'ehma_{val}'] = ta.EMA(2 * ema_1 - ema_2, int(np.sqrt(val)))
+            ema_1 = ta.EMA(dataframe["close"], val // 2)
+            ema_2 = ta.EMA(dataframe["close"], val)
+            dataframe[f"ehma_{val}"] = ta.EMA(2 * ema_1 - ema_2, int(np.sqrt(val)))
 
         return dataframe
 
@@ -181,68 +186,71 @@ class HullSuiteStrategy_v3(IStrategy):
         """
         # SHULL > MHULL SHULL = 2 days ago higher (SHULL) than current (MHULL)   (RED BAR)
 
-
         conditions = []
         if self.use_macd_buy.value:
-            conditions.append(qtpylib.crossed_above(dataframe['macd'], dataframe['macdsignal']))
+            conditions.append(qtpylib.crossed_above(dataframe["macd"], dataframe["macdsignal"]))
 
-        if self.buy_trigger.value == 'hma':
-            hma_current    = dataframe[f'hma_{self.hull_length.value}'] #MHULL
-            hma_previous   = dataframe[f'hma_{self.hull_length.value}'].shift(2) #SHULL
-            hma_condition  = hma_current < hma_previous # MHULL < SHULL
-            hma_condition1 =  hma_current > hma_previous # MHULL > SHULL
+        if self.buy_trigger.value == "hma":
+            hma_current = dataframe[f"hma_{self.hull_length.value}"]  # MHULL
+            hma_previous = dataframe[f"hma_{self.hull_length.value}"].shift(2)  # SHULL
+            hma_condition = hma_current < hma_previous  # MHULL < SHULL
+            hma_condition1 = hma_current > hma_previous  # MHULL > SHULL
 
             # Check if current candle's open is between current and previous HMA
-            open_condition = (dataframe['open'] > hma_current) \
-                             & (dataframe['open'] < hma_previous) \
-                             & (dataframe['close'] > hma_previous) \
-                             & (dataframe['high'] > hma_previous)
+            open_condition = (
+                (dataframe["open"] > hma_current)
+                & (dataframe["open"] < hma_previous)
+                & (dataframe["close"] > hma_previous)
+                & (dataframe["high"] > hma_previous)
+            )
             # open_condition = (dataframe['open'] < hma_previous) \
             # & (dataframe['close'] > hma_previous) & (dataframe['high'] > hma_previous)
-            conditions.append((open_condition & hma_condition)| hma_condition1)
+            conditions.append((open_condition & hma_condition) | hma_condition1)
 
             # conditions.append(
             #         dataframe[f'hma_{self.hull_length.value}'] > \
             #         dataframe[f'hma_{self.hull_length.value}'].shift(2)
             #     )
-        if self.buy_trigger.value == 'thma':
-            thma_current    = dataframe[f'thma_{self.hull_length.value}'] #MHULL
-            thma_previous   = dataframe[f'thma_{self.hull_length.value}'].shift(2) #SHULL
-            thma_condition  = thma_current < thma_previous # MHULL < SHULL
-            thma_condition1 =  thma_current > thma_previous # MHULL > SHULL
+        if self.buy_trigger.value == "thma":
+            thma_current = dataframe[f"thma_{self.hull_length.value}"]  # MHULL
+            thma_previous = dataframe[f"thma_{self.hull_length.value}"].shift(2)  # SHULL
+            thma_condition = thma_current < thma_previous  # MHULL < SHULL
+            thma_condition1 = thma_current > thma_previous  # MHULL > SHULL
             # Check if current candle's open is between current and previous HMA
-            open_condition = (dataframe['open'] > thma_current) \
-                             & (dataframe['open'] < thma_previous) \
-                             & (dataframe['close'] > thma_previous) \
-                             & (dataframe['high'] > thma_previous)
-            conditions.append((open_condition & thma_condition)| thma_condition1)
+            open_condition = (
+                (dataframe["open"] > thma_current)
+                & (dataframe["open"] < thma_previous)
+                & (dataframe["close"] > thma_previous)
+                & (dataframe["high"] > thma_previous)
+            )
+            conditions.append((open_condition & thma_condition) | thma_condition1)
 
             # conditions.append(
             #         dataframe[f'thma_{self.hull_length.value}'] > \
             #         dataframe[f'thma_{self.hull_length.value}'].shift(2)
             #     )
-        if self.buy_trigger.value == 'ehma':
-            ehma_current    = dataframe[f'ehma_{self.hull_length.value}'] #MHULL
-            ehma_previous   = dataframe[f'ehma_{self.hull_length.value}'].shift(2) #SHULL
-            ehma_condition  = ehma_current < ehma_previous # MHULL < SHULL
-            ehma_condition1 =  ehma_current > ehma_previous # MHULL > SHULL
+        if self.buy_trigger.value == "ehma":
+            ehma_current = dataframe[f"ehma_{self.hull_length.value}"]  # MHULL
+            ehma_previous = dataframe[f"ehma_{self.hull_length.value}"].shift(2)  # SHULL
+            ehma_condition = ehma_current < ehma_previous  # MHULL < SHULL
+            ehma_condition1 = ehma_current > ehma_previous  # MHULL > SHULL
             # Check if current candle's open is between current and previous eHMA
-            open_condition = (dataframe['open'] > ehma_current) \
-                             & (dataframe['open'] < ehma_previous) \
-                             & (dataframe['close'] > ehma_previous) \
-                             & (dataframe['high'] > ehma_previous)
-            conditions.append((open_condition & ehma_condition)| ehma_condition1)
+            open_condition = (
+                (dataframe["open"] > ehma_current)
+                & (dataframe["open"] < ehma_previous)
+                & (dataframe["close"] > ehma_previous)
+                & (dataframe["high"] > ehma_previous)
+            )
+            conditions.append((open_condition & ehma_condition) | ehma_condition1)
 
             # conditions.append(
             #         dataframe[f'ehma_{self.hull_length.value}'] >\
             #         dataframe[f'ehma_{self.hull_length.value}'].shift(2)
             #     )
 
-        conditions.append(dataframe['volume'] > 0)
+        conditions.append(dataframe["volume"] > 0)
         if conditions:
-            dataframe.loc[
-                reduce(lambda x, y: x & y, conditions),
-                'enter_long'] = 1
+            dataframe.loc[reduce(lambda x, y: x & y, conditions), "enter_long"] = 1
         return dataframe
 
     def populate_exit_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
@@ -254,27 +262,25 @@ class HullSuiteStrategy_v3(IStrategy):
         """
         conditions = []
         if self.use_macd_sell.value:
-            conditions.append(qtpylib.crossed_above(dataframe['macdsignal'], dataframe['macd']))
+            conditions.append(qtpylib.crossed_above(dataframe["macdsignal"], dataframe["macd"]))
 
-        if self.buy_trigger.value == 'hma':
+        if self.buy_trigger.value == "hma":
             conditions.append(
-                    dataframe[f'hma_{self.hull_length.value}'] < \
-                    dataframe[f'hma_{self.hull_length.value}'].shift(2)
-                )
-        if self.buy_trigger.value == 'thma':
+                dataframe[f"hma_{self.hull_length.value}"]
+                < dataframe[f"hma_{self.hull_length.value}"].shift(2)
+            )
+        if self.buy_trigger.value == "thma":
             conditions.append(
-                    dataframe[f'thma_{self.hull_length.value}'] < \
-                    dataframe[f'thma_{self.hull_length.value}'].shift(2)
-                )
-        if self.buy_trigger.value == 'ehma':
+                dataframe[f"thma_{self.hull_length.value}"]
+                < dataframe[f"thma_{self.hull_length.value}"].shift(2)
+            )
+        if self.buy_trigger.value == "ehma":
             conditions.append(
-                    dataframe[f'ehma_{self.hull_length.value}'] < \
-                    dataframe[f'ehma_{self.hull_length.value}'].shift(2)
-                )
+                dataframe[f"ehma_{self.hull_length.value}"]
+                < dataframe[f"ehma_{self.hull_length.value}"].shift(2)
+            )
 
-        conditions.append(dataframe['volume'] > 0)
+        conditions.append(dataframe["volume"] > 0)
         if conditions:
-            dataframe.loc[
-                reduce(lambda x, y: x & y, conditions),
-                'exit_long'] = 1
+            dataframe.loc[reduce(lambda x, y: x & y, conditions), "exit_long"] = 1
         return dataframe
