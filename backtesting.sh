@@ -8,8 +8,9 @@
 # freqtrade backtesting --config user_data/config_ClucHAnix_5m_4.json --strategy ClucHAnix_5m --timerange=20200101-20231212
 # Tested , Good
 # freqtrade backtesting --config user_data/config_ElliotV5_SMA.json --strategy ElliotV5_SMA --timerange=20200101-20231212
-freqtrade backtesting --config user_data/config_RalliV1_2.json --strategy RalliV1 --timerange=20210101-20231212
-
+# Tested , very good
+freqtrade backtesting --config user_data/config_RalliV1_2.json --strategy RalliV1 --timerange=20210101-20221212
+# freqtrade backtesting --config user_data/config_El3v2_tag_cofi_green_2.json --strategy EI3v2_tag_cofi_green --timerange=20210101-20221212
 
 
 
