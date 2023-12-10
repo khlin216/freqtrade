@@ -3,14 +3,17 @@
 # freqtrade backtesting --config user_data/config_turbov8.json --strategy turbov8 --timerange=20200101-20231212
 # freqtrade backtesting --config user_data/config_dualwave.json --strategy dualwave --timerange=20200101-20231212
 # Tested, not good.
+freqtrade backtesting --config user_data/config_BB_RPB_TSL_RNG.json --strategy BB_RPB_TSL_RNG --timerange=20210101-20221231
 # freqtrade backtesting --config user_data/config_BB_RPB_TSL.json --strategy BB_RPB_TSL --timerange=20200101-20231212
 # freqtrade backtesting --config user_data/config_ClucHAnix_5mTB1_3.json --strategy ClucHAnix_5m1 --timerange=20200101-20231212
 # freqtrade backtesting --config user_data/config_ClucHAnix_5m_4.json --strategy ClucHAnix_5m --timerange=20200101-20231212
 # Tested , Good
 # freqtrade backtesting --config user_data/config_ElliotV5_SMA.json --strategy ElliotV5_SMA --timerange=20200101-20231212
 # Tested , very good
-freqtrade backtesting --config user_data/config_RalliV1_2.json --strategy RalliV1 --timerange=20210101-20221212
+# freqtrade backtesting --config user_data/config_RalliV1_2.json --strategy RalliV1 --timerange=20210101-20221212
 # freqtrade backtesting --config user_data/config_El3v2_tag_cofi_green_2.json --strategy EI3v2_tag_cofi_green --timerange=20210101-20221212
+# freqtrade backtesting --config user_data/config_NASOSv7.json --strategy NASOSv7 --timerange=20210101-20221212
+
 
 
 
