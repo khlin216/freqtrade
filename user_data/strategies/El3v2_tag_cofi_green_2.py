@@ -172,7 +172,7 @@ class EI3v2_tag_cofi_green(IStrategy):
     sell_profit_offset = 0.01
     ignore_roi_if_buy_signal = False
 
-    ## Optional order time in force.
+    # Optional order time in force.
     order_time_in_force = {"buy": "gtc", "sell": "gtc"}
 
     # Optimal timeframe for the strategy
