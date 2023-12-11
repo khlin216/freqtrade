@@ -1,11 +1,11 @@
 {
-    "max_open_trades": 5,
+    "max_open_trades": 3,
     "stake_currency": "USDT",
     "stake_amount": "unlimited",
     "tradable_balance_ratio": 0.99,
     "fiat_display_currency": "USD",
     "dry_run": true,
-    "db_url": "sqlite:///RalliV1_2.sqlite",
+    "db_url": "sqlite:///ElliotV5HO.dryrun.sqlite",
     "dry_run_wallet": 1000,
     "cancel_open_orders_on_exit": false,
     "trading_mode": "spot",
@@ -54,7 +54,7 @@
     "pairlists": [
         {
             "method": "StaticPairList",
-            "number_assets": 20,
+            "number_assets": 38,
             "sort_key": "quoteVolume",
             "min_value": 0,
             "refresh_period": 1800
