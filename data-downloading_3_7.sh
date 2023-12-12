@@ -1,4 +1,4 @@
-# freqtrade download-data --exchange binance --pairs .*/USDT -t 3m --timerange 20180101-
+freqtrade download-data --exchange binance --pairs .*/USDT -t 3m --timerange 20180101-
 # freqtrade download-data --exchange binance --pairs .*/USDT -t 7m --timerange 20180101-
 # freqtrade download-data --exchange binance --pairs .*/USDT -t 13m --timerange 20180101-
 # freqtrade download-data --exchange binance --pairs .*/USDT -t 17m --timerange 20180101-
