@@ -1,0 +1,1 @@
+freqtrade trade --config user_data/config_ElliotV5HO_dry_run.json --strategy ElliotV5HO --db-url sqlite:///ElliotV5HO.dryrun.sqlite
