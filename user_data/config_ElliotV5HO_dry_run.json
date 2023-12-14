@@ -5,8 +5,8 @@
     "tradable_balance_ratio": 0.99,
     "fiat_display_currency": "USD",
     "dry_run": true,
-    "db_url": "sqlite:///ElliotV5_SMA.dryrun.sqlite",
-    "dry_run_wallet": 5000,
+    "db_url": "sqlite:///ElliotV5HO.dryrun.sqlite",
+    "dry_run_wallet": 1000,
     "cancel_open_orders_on_exit": false,
     "trading_mode": "spot",
     "margin_mode": "",
@@ -41,21 +41,20 @@
             "BTC/USDT","ETH/USDT","APT/USDT","MATIC/USDT","AVAX/USDT",
             "SOL/USDT","ATOM/USDT","AAVE/USDT","ADA/USDT","APE/USDT",
             "ARB/USDT","ARK/USDT","ALGO/USDT","BAT/USDT","BCH/USDT","DOGE/USDT","WLD/USDT",
-            "DYDX/USDT","DOT/USDT","DREP/USDT","DUSK/USDT","FTM/USDT","NEXO/USDT",
+            "DYDX/USDT","DOT/USDT","DREP/USDT","DUSK/USDT",
             "ELF/USDT","ENJ/USDT","EPX/USDT","ETC/USDT",
             "GMT/USDT","GMX/USDT","CVC/USDT","IOTA/USDT",
             "TRX/USDT","FTT/USDT","LTC/USDT","FLOW/USDT",
             "WAVES/USDT","XLM/USDT","XMR/USDT",
-            "RUNE/USDT","SAND/USDT","PEPE/USDT"
+            "RUNE/USDT","SAND/USDT","PEPE/USDT"                
         ],
         "pair_blacklist": [
-            "BNB/.*"
-        ]
+            "BNB/.*"]
     },
     "pairlists": [
         {
             "method": "StaticPairList",
-            "number_assets": 20,
+            "number_assets": 38,
             "sort_key": "quoteVolume",
             "min_value": 0,
             "refresh_period": 1800
@@ -69,7 +68,7 @@
     "api_server": {
         "enabled": true,
         "listen_ip_address": "127.0.0.1",
-        "listen_port": 8080,
+        "listen_port": 8082,
         "verbosity": "error",
         "enable_openapi": false,
         "jwt_secret_key": "a5579b05c959bf689ad4013d5fa193ef1fbd1d12b3c1431f379f26f3c0f50eeb",
