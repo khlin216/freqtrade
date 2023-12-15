@@ -1,0 +1,12 @@
+{
+  "exchange": {
+    "pair_whitelist": [
+      "BTC/USDT",
+      "ETH/USDT",
+      "MATIC/USDT",
+      "DOGE/USDT",
+      "ADA/USDT",
+      "XRP/USDT"
+    ]
+  }
+}
