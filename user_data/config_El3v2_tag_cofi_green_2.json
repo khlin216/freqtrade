@@ -1,5 +1,5 @@
 {
-    "max_open_trades": 3,
+    "max_open_trades": 5,
     "stake_currency": "USDT",
     "stake_amount": "unlimited",
     "tradable_balance_ratio": 0.99,
@@ -17,7 +17,7 @@
         "unit": "minutes"
     },
     "entry_pricing": {
-        "price_side": "same",
+        "price_side": "ask",
         "use_order_book": true,
         "order_book_top": 1,
         "price_last_balance": 0.0,
@@ -27,7 +27,7 @@
         }
     },
     "exit_pricing": {
-        "price_side": "same",
+        "price_side": "bid",
         "use_order_book": true,
         "order_book_top": 1
     },
