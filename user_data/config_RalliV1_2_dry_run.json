@@ -61,9 +61,42 @@
         }
     ],
     "telegram": {
-        "enabled": false,
-        "token": "",
-        "chat_id": ""
+        "enabled": true,
+        "token": "6579122024:AAFefAuuZ9lP5-xoKhvnZCsYcW7Xysrq6rY",
+        "chat_id": "544363769",
+        "keyboard": [
+          ["/daily", "/stats", "/balance", "/profit"],
+          ["/status table", "/performance"],
+          ["/reload_config", "/count", "/logs","/start","/stop"]
+        ],
+        "allow_custom_messages": true,
+        "notification_settings": {
+            "status": "silent",
+            "warning": "on",
+            "startup": "off",
+            "entry": "silent",
+            "entry_fill": "on",
+            "entry_cancel": "silent",
+            "exit": {
+                "roi": "silent",
+                "emergency_exit": "on",
+                "force_exit": "on",
+                "exit_signal": "silent",
+                "trailing_stop_loss": "on",
+                "stop_loss": "on",
+                "stoploss_on_exchange": "on",
+                "custom_exit": "silent",
+                "partial_exit": "on"
+            },
+        "exit_cancel": "on",
+        "exit_fill": "off",
+        "protection_trigger": "off",
+        "protection_trigger_global": "on",
+        "strategy_msg": "off",
+        "show_candle": "off"
+        },
+        "reload": true,
+        "balance_dust_level": 0.01
     },
     "api_server": {
         "enabled": true,
