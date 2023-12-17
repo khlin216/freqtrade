@@ -29,6 +29,7 @@ sell_params = {
       "high_offset": 0.992
     }
 
+
 def EWO(dataframe, ema_length=5, ema2_length=35):
     df = dataframe.copy()
     ema1 = ta.EMA(df, timeperiod=ema_length)
@@ -36,10 +37,10 @@ def EWO(dataframe, ema_length=5, ema2_length=35):
     emadif = (ema1 - ema2) / df['close'] * 100
     return emadif
 
+
 def populate_indicators(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
+    return dataframe
 
-
-        return dataframe
 
 class ElliotV4Changed(IStrategy):
     INTERFACE_VERSION = 2
@@ -86,7 +87,7 @@ class ElliotV4Changed(IStrategy):
     sell_profit_offset = 0.01
     ignore_roi_if_buy_signal = True
 
-    ## Optional order time in force.
+    # Optional order time in force.
     order_time_in_force = {
         'buy': 'gtc',
         'sell': 'ioc'
@@ -134,7 +135,7 @@ class ElliotV4Changed(IStrategy):
 
         # Elliot
         dataframe['EWO'] = EWO(dataframe, self.fast_ewo, self.slow_ewo)
-        
+
         # RSI
         dataframe['rsi'] = ta.RSI(dataframe, timeperiod=14)
 
@@ -164,7 +165,7 @@ class ElliotV4Changed(IStrategy):
             dataframe.loc[
                 reduce(lambda x, y: x | y, conditions),
                 'buy'
-            ]=1
+            ] = 1
 
         return dataframe
 
@@ -182,6 +183,6 @@ class ElliotV4Changed(IStrategy):
             dataframe.loc[
                 reduce(lambda x, y: x | y, conditions),
                 'sell'
-            ]=1
+            ] = 1
 
         return dataframe

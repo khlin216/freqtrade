@@ -1,0 +1,1 @@
+freqtrade trade --config user_data/config_ElliotV5_SMA_dry_run.json --strategy ElliotV5_SMA --db-url sqlite:///ElliotV5_SMA.dryrun.sqlite
