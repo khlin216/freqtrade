@@ -4,8 +4,8 @@
     "stake_amount": "unlimited",
     "tradable_balance_ratio": 0.99,
     "fiat_display_currency": "USD",
-    "dry_run": false,
-    "db_url": "sqlite:///El3v2_tag_cofi_green_2.truerun.sqlite",
+    "dry_run": true,
+    "db_url": "sqlite:///El3v2_tag_cofi_green_2.dryrun_linode.sqlite",
     "dry_run_wallet": 800,
     "cancel_open_orders_on_exit": false,
     "trading_mode": "spot",
@@ -93,7 +93,7 @@
     ],
     "telegram": {
         "enabled": true,
-        "token": "6493576768:AAFIdCCUuyRR8JeVUTfEWDxwZvKStDLSC3U",
+        "token": "6493576768:AAFIdCCUuyRR8JeVUTfEWDxwZvKStDLSC3U8",
         "chat_id": "544363769",
         "keyboard": [
             [
@@ -155,7 +155,7 @@
         "username": "freqtrader",
         "password": "Alex1805"
     },
-    "bot_name": "freqtrade",
+    "bot_name": "green2_dry_run",
     "initial_state": "running",
     "force_entry_enable": false,
     "internals": {
