@@ -93,7 +93,7 @@
     ],
     "telegram": {
         "enabled": true,
-        "token": "6493576768:AAFIdCCUuyRR8JeVUTfEWDxwZvKStDLSC3U8",
+        "token": "6493576768:AAFIdCCUuyRR8JeVUTfEWDxwZvKStDLSC3U",
         "chat_id": "544363769",
         "keyboard": [
             [
