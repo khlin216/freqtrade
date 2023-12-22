@@ -1,0 +1,1 @@
+freqtrade trade --config user_data/config_El3v2_tag_cofi_green_2_dry_run_lincode_bybit.json --strategy EI3v2_tag_cofi_green --db-url sqlite:///El3v2_tag_cofi_green_2_lincode_bybit.dryrun.sqlite
