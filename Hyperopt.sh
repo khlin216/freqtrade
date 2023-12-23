@@ -1,1 +1,1 @@
-freqtrade hyperopt --hyperopt-loss SharpeHyperOptLoss --spaces buy --strategy hyperopt_strat --timerange 20221101- --dry-run-wallet 1000  --enable-protections  -c user_data/confi.json  --fee 0.0002 -p "BTC/USDT"
+freqtrade hyperopt --hyperopt-loss SharpeHyperOptLoss --spaces buy --strategy RalliV1 --timerange 20210101- --dry-run-wallet 10000 --spaces buy --enable-protections -c user_data/config_RalliV1_2.json --fee 0.0002
