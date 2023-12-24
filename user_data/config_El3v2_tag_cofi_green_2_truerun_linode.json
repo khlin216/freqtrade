@@ -43,9 +43,9 @@
             "ARB/USDT","ARK/USDT","ALGO/USDT","BAT/USDT","BCH/USDT",
             "DOGE/USDT","WLD/USDT","DYDX/USDT","DOT/USDT","DREP/USDT",
             "DUSK/USDT","ELF/USDT","ENJ/USDT","EPX/USDT","ETC/USDT",
-            "GMT/USDT","GMX/USDT","CVC/USDT","IOTA/USDT","TRX/USDT",
+            "GMT/USDT","GMX/USDT","IOTA/USDT","TRX/USDT",
             "FTT/USDT","LTC/USDT","FLOW/USDT","WAVES/USDT","XLM/USDT",
-            "XMR/USDT","RUNE/USDT","SAND/USDT"  
+            "XMR/USDT","RUNE/USDT","SAND/USDT"     
         ],
         "pair_blacklist": [
             "BNB/.*"
