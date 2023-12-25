@@ -38,19 +38,11 @@
         "ccxt_config": {},
         "ccxt_async_config": {},
         "pair_whitelist": [
-<<<<<<< HEAD
             "BTC/USDT",
             "ETH/USDT",
             "APT/USDT",
             "MATIC/USDT",
             "AVAX/USDT",
-=======
-            "BTC/USDT",
-            "ETH/USDT",
-            "APT/USDT",
-            "MATIC/USDT",
-            "AVAX/USDT",
->>>>>>> 2ccaeacfb (test)
             "SOL/USDT",
             "ATOM/USDT",
             "AAVE/USDT",
@@ -80,15 +72,9 @@
             "FLOW/USDT",
             "WAVES/USDT",
             "XLM/USDT",
-<<<<<<< HEAD
-            "XMR/USDT",
-            "RUNE/USDT",
-            "SAND/USDT"     
-=======
             "XMR/USDT",
             "RUNE/USDT",
             "SAND/USDT"
->>>>>>> 2ccaeacfb (test)
         ],
         "pair_blacklist": [
             "BNB/.*"
