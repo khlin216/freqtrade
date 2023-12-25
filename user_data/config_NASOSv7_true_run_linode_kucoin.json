@@ -35,6 +35,7 @@
         "name": "kucoin",
         "key": "65891076ebfcf200011e8139",
         "secret": "7b7b1c05-c03a-461f-b522-cba79c64869c",
+        "password": "Alex1805",
         "ccxt_config": {},
         "ccxt_async_config": {},
         "pair_whitelist": [
