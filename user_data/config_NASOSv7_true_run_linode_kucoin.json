@@ -37,7 +37,10 @@
         "secret": "7b7b1c05-c03a-461f-b522-cba79c64869c",
         "password": "Alex1805",
         "ccxt_config": {},
-        "ccxt_async_config": {},
+        "ccxt_async_config": {
+            "enableRateLimit": true,
+            "rateLimit": 3100
+        },
         "pair_whitelist": [
             "BTC/USDT",
             "ETH/USDT",
