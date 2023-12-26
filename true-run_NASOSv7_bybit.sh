@@ -1,0 +1,1 @@
+freqtrade trade --config user_data/config_NASOSv7_true_run_linode_bybit.json --strategy NASOSv7 --db-url sqlite:///NASOSv7.truerun_bybit.sqlite
