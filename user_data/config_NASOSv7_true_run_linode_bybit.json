@@ -33,9 +33,11 @@
     },
     "exchange": {
         "name": "bybit",
-        "key": "65891076ebfcf200011e8139",
-        "secret": "7b7b1c05-c03a-461f-b522-cba79c64869c",
-        "ccxt_config": {"enableRateLimit": true},
+        "key": "DiUros7lWPjNZFXjHw",
+        "secret": "396zUrK9obXlWhtQrzUkHbZRieU8rlT0xQ0T",
+        "ccxt_config": {
+            "enableRateLimit": true
+        },
         "ccxt_async_config": {
             "enableRateLimit": true,
             "rateLimit": 10
