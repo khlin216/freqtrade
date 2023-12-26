@@ -36,10 +36,10 @@
         "key": "65891076ebfcf200011e8139",
         "secret": "7b7b1c05-c03a-461f-b522-cba79c64869c",
         "password": "Alex1805",
-        "ccxt_config": {},
+        "ccxt_config": {"enableRateLimit": true},
         "ccxt_async_config": {
             "enableRateLimit": true,
-            "rateLimit": 3100
+            "rateLimit": 200
         },
         "pair_whitelist": [
             "BTC/USDT",
@@ -74,7 +74,7 @@
             "SAND/USDT"
         ],
         "pair_blacklist": [
-            "BNB/.*"
+            "KCS/.*"
         ]
     },
     "pairlists": [
