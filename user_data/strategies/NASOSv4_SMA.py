@@ -177,7 +177,7 @@ class NASOSv4_SMA(IStrategy):
         if (current_profit > PF_2):
             sl_profit = SL_2 + (current_profit - PF_2)
         elif (current_profit > PF_1):
-            sl_profit = SL_1 + ((current_profit - PF_1)*(SL_2 - SL_1)/(PF_2 - PF_1))
+            sl_profit = SL_1 + ((current_profit - PF_1) * (SL_2 - SL_1) / (PF_2 - PF_1))
         else:
             sl_profit = HSL
 
@@ -195,7 +195,7 @@ class NASOSv4_SMA(IStrategy):
 
         if (last_candle is not None):
             if (sell_reason in ['sell_signal']):
-                if (last_candle['hma_50']*1.149 > last_candle['ema_100']) and (last_candle['close'] < last_candle['ema_100']*0.951):  # *1.2
+                if (last_candle['hma_50'] * 1.149 > last_candle['ema_100']) and (last_candle['close'] < last_candle['ema_100'] * 0.951):  # *1.2
                     return False
 
         # slippage
@@ -276,6 +276,7 @@ class NASOSv4_SMA(IStrategy):
     def populate_buy_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
 
         dont_buy_conditions = []
+        dataframe.loc[:, "buy_tag"] = ""
 
         dont_buy_conditions.append(
             (
@@ -350,6 +351,6 @@ class NASOSv4_SMA(IStrategy):
             dataframe.loc[
                 reduce(lambda x, y: x | y, conditions),
                 'sell'
-            ]=1
+            ] = 1
 
         return dataframe

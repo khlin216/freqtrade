@@ -300,6 +300,7 @@ class NASOSv7(IStrategy):
 
     def populate_entry_trend(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
         dont_buy_conditions = []
+        dataframe.loc[:, "buy_tag"] = ""
 
         dont_buy_conditions.append(
             (
@@ -324,20 +325,17 @@ class NASOSv7(IStrategy):
                 & (dataframe["EWO"] > self.ewo_high.value)
                 & (dataframe["rsi"] < self.rsi_buy.value)
                 & (dataframe["volume"] > 0)
-                & (
-                    dataframe["close"]
-                    < (
-                        dataframe[f"ma_sell_{self.base_nb_candles_sell.value}"]
-                        * self.high_offset.value
-                    )
-                )
+                & (dataframe["close"] < (dataframe[f"ma_sell_{self.base_nb_candles_sell.value}"]
+                                         * self.high_offset.value
+                                         )
+                   )
             ),
             ["enter_long", "buy_tag"],
         ] = (1, "ewo1")
 
         dataframe.loc[
             (
-                (dataframe["rsi_fast"] < 35)
+                (dataframe["rsi_fast"] < 35) 
                 & (
                     dataframe["close"]
                     < (
