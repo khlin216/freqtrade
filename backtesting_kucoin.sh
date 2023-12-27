@@ -19,5 +19,5 @@
 # freqtrade backtesting --config user_data/config_NotAnotherSMAOffsetStrategy_2.json --strategy NotAnotherSMAOffsetStrategy --timerange=20220101-20231130
 
 # Tested ,very Good
-freqtrade backtesting --config user_data/config_ElliotV5_SMA_dry_run_kucoin.json --strategy ElliotV5_SMA --timerange=20221001-20231030
+freqtrade backtesting --config user_data/config_NASOSv4_SMA_kucoin.json --strategy NASOSv4_SMA --timerange=20201001-20231130
 

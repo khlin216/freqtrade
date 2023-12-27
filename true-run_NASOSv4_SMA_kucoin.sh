@@ -1,0 +1,1 @@
+freqtrade trade --config user_data/config_NASOSv4_SMA_true_run_linode_kucoin.json --strategy NASOSv4_SMA --db-url sqlite:///NASOSv4_SMA.truerun_kucoin.sqlite
