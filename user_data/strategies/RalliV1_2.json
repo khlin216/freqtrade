@@ -1,0 +1,41 @@
+{
+  "strategy_name": "RalliV1",
+  "params": {
+    "roi": {
+      "0": 0.04,
+      "40": 0.032,
+      "87": 0.018,
+      "201": 0
+    },
+    "stoploss": {
+      "stoploss": -0.3
+    },
+    "trailing": {
+      "trailing_stop": false,
+      "trailing_stop_positive": 0.01,
+      "trailing_stop_positive_offset": 0.03,
+      "trailing_only_offset_is_reached": true
+    },
+    "max_open_trades": {
+      "max_open_trades": 5
+    },
+    "buy": {
+      "ewo_high": 2.327,
+      "ewo_high_2": -2.327,
+      "ewo_low": -20.988,
+      "low_offset": 0.975,
+      "low_offset_2": 0.955,
+      "rsi_buy": 60,
+      "rsi_buy_2": 45,
+      "base_nb_candles_buy": 19
+    },
+    "sell": {
+      "base_nb_candles_sell": 24,
+      "high_offset": 0.991,
+      "high_offset_2": 0.997
+    },
+    "protection": {}
+  },
+  "ft_stratparam_v": 1,
+  "export_time": "2023-12-27 01:29:53.024347+00:00"
+}

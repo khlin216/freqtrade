@@ -63,29 +63,29 @@ class RalliV1(IStrategy):
     base_nb_candles_buy = IntParameter(
         5, 80, default=buy_params['base_nb_candles_buy'], space='buy', optimize=True)
     base_nb_candles_sell = IntParameter(
-        5, 80, default=sell_params['base_nb_candles_sell'], space='sell', optimize=True)
+        5, 80, default=sell_params['base_nb_candles_sell'], space='sell', optimize=False)
     low_offset = DecimalParameter(
-        0.9, 0.99, default=buy_params['low_offset'], space='buy', optimize=True)
+        0.9, 0.99, default=buy_params['low_offset'], space='buy', optimize=False)
     low_offset_2 = DecimalParameter(
-        0.9, 0.99, default=buy_params['low_offset_2'], space='buy', optimize=True)
+        0.9, 0.99, default=buy_params['low_offset_2'], space='buy', optimize=False)
     high_offset = DecimalParameter(
-        0.95, 1.1, default=sell_params['high_offset'], space='sell', optimize=True)
+        0.95, 1.1, default=sell_params['high_offset'], space='sell', optimize=False)
     high_offset_2 = DecimalParameter(
-        0.99, 1.5, default=sell_params['high_offset_2'], space='sell', optimize=True)
+        0.99, 1.5, default=sell_params['high_offset_2'], space='sell', optimize=False)
 
     # Protection
     fast_ewo = 50
     slow_ewo = 200
     ewo_low = DecimalParameter(-20.0, -8.0,
-                               default=buy_params['ewo_low'], space='buy', optimize=True)
+                               default=buy_params['ewo_low'], space='buy', optimize=False)
     ewo_high = DecimalParameter(
-        2.0, 12.0, default=buy_params['ewo_high'], space='buy', optimize=True)
+        2.0, 12.0, default=buy_params['ewo_high'], space='buy', optimize=False)
 
     ewo_high_2 = DecimalParameter(
-        -6.0, 12.0, default=buy_params['ewo_high_2'], space='buy', optimize=True)
+        -6.0, 12.0, default=buy_params['ewo_high_2'], space='buy', optimize=False)
 
-    rsi_buy = IntParameter(30, 70, default=buy_params['rsi_buy'], space='buy', optimize=True)
-    rsi_buy_2 = IntParameter(30, 70, default=buy_params['rsi_buy_2'], space='buy', optimize=True)
+    rsi_buy = IntParameter(30, 70, default=buy_params['rsi_buy'], space='buy', optimize=False)
+    rsi_buy_2 = IntParameter(30, 70, default=buy_params['rsi_buy_2'], space='buy', optimize=False)
 
     # Trailing stop:
     trailing_stop = False
