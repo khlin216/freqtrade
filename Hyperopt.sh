@@ -1,1 +1,2 @@
+# freqtrade hyperopt --hyperopt-loss SharpeHyperOptLoss --spaces buy --strategy RalliV1 --timerange 20200101-20211030 --dry-run-wallet 10000 --spaces buy --enable-protections -c user_data/config_RalliV1_2.json --fee 0.0002 -j 20
 freqtrade hyperopt --hyperopt-loss SharpeHyperOptLoss --spaces buy --strategy RalliV1 --timerange 20200101-20211030 --dry-run-wallet 10000 --spaces buy --enable-protections -c user_data/config_RalliV1_2.json --fee 0.0002 -j 20
